@@ -1,0 +1,44 @@
+= SBuild Unzip Plugin
+:pluginversion: 0.0.9000
+:sbuildversion: 0.7.4.9000
+:toc:
+:toc-placement: preamble
+:toclevels: 1
+
+This SBuild Plugin provides an Unzip Scheme Handler for http://sbuild.org[SBuild].
+
+== Download
+
+The SBuild Unzip Plugin can be downloaded from http://repo1.maven.org/maven2/org/sbuild/org.sbuild.plugins.unzip/[Maven Central].
+
+To include it in your SBuild build file use the `@classpath` annotation:
+
+[source,scala]
+[subs="attributes"]
+----
+@classpath("mvn:org.sbuild:org.sbuild.plugins.unzip:{pluginversion}")
+----
+
+== Building from Source
+
+If you want to build this plugin from source, you need at least SBuild {sbuildversion}.
+
+----
+git clone https://github.com/SBuild-org/sbuild-unzip-plugin.git
+cd sbuild-sbuild-plugin/org.sbuild.plugins.unzip
+sbuild jar
+----
+
+You will find the built jar in the directory `org.sbuild.plugins.unzip/target`.
+
+== Configuration
+
+All configurable properties are documented via ScalaDoc. See file link:org.sbuild.plugins.unzip/src/main/scala/org/sbuild/plugins/unzip/Unzip.scala[`Unzip.scala`].
+
+In it's default configuration, this plugin will register a `zip` scheme, which will transparently expand resources `.sbuild/zip`.
+
+Named plugin instances will register a scheme identical to the plugin instance name.
+
+== Changelog
+
+_No public releases yet_
