@@ -31,10 +31,10 @@ class SBuild(implicit _project: Project) {
 
   Plugin[SBuildPlugin] configure {
     _.copy(
-      pluginClass = s"${namespace}.Https",
+      pluginClass = s"${namespace}.Unzip",
       pluginVersion = version,
       deps = Seq(),
-      testDeps = Seq(s"../../sbuild/org.sbuild.runner/target/org.sbuild.runner-${sbuildVersion.version}.jar"),
+      testDeps = Seq(s"${sbuildBaseDir}/org.sbuild.runner/target/org.sbuild.runner-${sbuildVersion.version}.jar"),
       sbuildVersion = sbuildVersion
     )
   }

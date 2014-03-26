@@ -26,7 +26,7 @@ class UnzipSchemeHandlerTest extends FreeSpec {
 
   // SchemeHandler("http", new HttpSchemeHandler(httpPath))
 
-  val zipHandler = new ZipSchemeHandler(zipPath)
+  val zipHandler = new UnzipSchemeHandler(zipPath)
 
   "Base dir is correct" in {
     assert(zipHandler.baseDir === zipPath)
