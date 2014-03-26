@@ -1,10 +1,6 @@
 import de.tototec.sbuild._
 import de.tototec.sbuild.ant._
 import de.tototec.sbuild.ant.tasks._
-import de.tototec.sbuild.ant._
-import de.tototec.sbuild.ant.tasks._
-
-import de.tototec.sbuild._
 
 @version("0.7.1")
 @classpath(
@@ -20,6 +16,8 @@ class SBuild(implicit _project: Project) {
   val sourcesJar = s"target/${namespace}-${version}-sources.jar"
   val sourcesDir = "src/main/scala"
 
+  val sbuildBaseDir = Prop("SBUILD_BASE_DIR", "../..")
+
   Target("phony:all") dependsOn "jar" ~ sourcesJar ~ "test"
 
   import org.sbuild.plugins.sbuildplugin._
@@ -28,7 +26,7 @@ class SBuild(implicit _project: Project) {
     override protected def project = _project
     override val version: String = "0.7.4.9000"
     override val sbuildClasspath: TargetRefs =
-      s"../../sbuild/org.sbuild/target/org.sbuild-${this.version}.jar"
+      s"${sbuildBaseDir}/org.sbuild/target/org.sbuild-${this.version}.jar"
   }
 
   Plugin[SBuildPlugin] configure {
