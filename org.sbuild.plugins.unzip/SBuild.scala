@@ -20,7 +20,7 @@ class SBuild(implicit _project: Project) {
   val sourcesJar = s"target/${namespace}-${version}-sources.jar"
   val sourcesDir = "src/main/scala"
 
-  Target("phony:all") dependsOn "jar" ~ sourcesJar
+  Target("phony:all") dependsOn "jar" ~ sourcesJar ~ "test"
 
   import org.sbuild.plugins.sbuildplugin._
 
