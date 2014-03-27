@@ -24,7 +24,7 @@ class SBuild(implicit _project: Project) {
 
   val sbuildVersion = new SBuildVersion with SBuildVersion.Scala_2_10_3 with SBuildVersion.ScalaTest_2_0 {
     override protected def project = _project
-    override val version: String = "0.7.4.9000"
+    override val version: String = "0.7.9000"
     override val sbuildClasspath: TargetRefs =
       s"${sbuildBaseDir}/org.sbuild/target/org.sbuild-${this.version}.jar"
   }
