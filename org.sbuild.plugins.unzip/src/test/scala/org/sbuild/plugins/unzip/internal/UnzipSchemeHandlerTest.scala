@@ -19,7 +19,7 @@ class UnzipSchemeHandlerTest extends FreeSpec {
   projDir.mkdirs
   val dummyProjectFile = new File(projDir, "SBuild.scala")
   dummyProjectFile.createNewFile()
-  implicit val dummyProject: Project = new BuildFileProject(dummyProjectFile, null)
+  implicit val dummyProject: Project = new BuildFileProject(dummyProjectFile, projDir, null)
 
   val httpPath = Path(".sbuild/http")
   val zipPath = Path(".sbuild/unzip")
