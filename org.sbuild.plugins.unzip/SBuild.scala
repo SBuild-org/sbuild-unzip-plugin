@@ -22,11 +22,22 @@ class SBuild(implicit _project: Project) {
 
   import org.sbuild.plugins.sbuildplugin._
 
-  val sbuildVersion = new SBuildVersion with SBuildVersion.Scala_2_10_3 with SBuildVersion.ScalaTest_2_0 {
-    override protected def project = _project
+  val scalaVersion = "2.11.0-RC3"
+  val scalaBinVersion = "2.11.0-RC3"
+  val sbuildVersion = new SBuildVersion {
     override val version: String = "0.7.9000"
     override val sbuildClasspath: TargetRefs =
       s"${sbuildBaseDir}/org.sbuild/target/org.sbuild-${this.version}.jar"
+    override val scalaClasspath: TargetRefs =
+      s"mvn:org.scala-lang:scala-library:${scalaVersion}" ~
+        s"mvn:org.scala-lang:scala-reflect:${scalaVersion}" ~
+        s"mvn:org.scala-lang.modules:scala-xml_${scalaBinVersion}:1.0.1"
+    override val scalaCompilerClasspath: TargetRefs =
+      s"mvn:org.scala-lang:scala-library:${scalaVersion}" ~
+        s"mvn:org.scala-lang:scala-reflect:${scalaVersion}" ~
+        s"mvn:org.scala-lang:scala-compiler:${scalaVersion}"
+    override val scalaTestClasspath: TargetRefs =
+      s"mvn:org.scalatest:scalatest_${scalaBinVersion}:2.1.2"
   }
 
   Plugin[SBuildPlugin] configure {
