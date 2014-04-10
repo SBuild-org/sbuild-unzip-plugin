@@ -15,6 +15,7 @@ class SBuild(implicit _project: Project) {
   val url = "https://github.com/SBuild-org/sbuild-unzip-plugin"
   val sourcesJar = s"target/${namespace}-${version}-sources.jar"
   val sourcesDir = "src/main/scala"
+  val sbuildVersion = "0.7.9010.0-8-0-M1"
 
   val sbuildBaseDir = Prop("SBUILD_BASE_DIR", "../..")
 
@@ -24,10 +25,10 @@ class SBuild(implicit _project: Project) {
 
   val scalaVersion = "2.11.0-RC4"
   val scalaBinVersion = "2.11.0-RC4"
-  val sbuildVersion = new SBuildVersion {
-    override val version: String = "0.7.9000"
+  val sbuildPluginVersion = new SBuildVersion {
+    override val version: String = sbuildVersion
     override val sbuildClasspath: TargetRefs =
-      s"${sbuildBaseDir}/org.sbuild/target/org.sbuild-${this.version}.jar"
+      s"${sbuildBaseDir}/org.sbuild/target/org.sbuild-${sbuildVersion}.jar"
     override val scalaClasspath: TargetRefs =
       s"mvn:org.scala-lang:scala-library:${scalaVersion}" ~
         s"mvn:org.scala-lang:scala-reflect:${scalaVersion}" ~
@@ -45,8 +46,8 @@ class SBuild(implicit _project: Project) {
       pluginClass = s"${namespace}.Unzip",
       pluginVersion = version,
       deps = Seq(),
-      testDeps = Seq(s"${sbuildBaseDir}/org.sbuild.runner/target/org.sbuild.runner-${sbuildVersion.version}.jar"),
-      sbuildVersion = sbuildVersion
+      testDeps = Seq(s"${sbuildBaseDir}/org.sbuild.runner/target/org.sbuild.runner-${sbuildVersion}.jar"),
+      sbuildVersion = sbuildPluginVersion
     )
   }
 
