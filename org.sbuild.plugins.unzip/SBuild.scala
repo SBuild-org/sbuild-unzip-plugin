@@ -28,7 +28,7 @@ class SBuild(implicit _project: Project) {
   val sbuildPluginVersion = new SBuildVersion {
     override val version: String = sbuildVersion
     override val sbuildClasspath: TargetRefs =
-      s"${sbuildBaseDir}/org.sbuild/target/org.sbuild-${sbuildVersion}.jar"
+      s"http://sbuild.org/uploads/sbuild/${sbuildVersion}/org.sbuild-${sbuildVersion}.jar"
     override val scalaClasspath: TargetRefs =
       s"mvn:org.scala-lang:scala-library:${scalaVersion}" ~
         s"mvn:org.scala-lang:scala-reflect:${scalaVersion}" ~
@@ -46,7 +46,7 @@ class SBuild(implicit _project: Project) {
       pluginClass = s"${namespace}.Unzip",
       pluginVersion = version,
       deps = Seq(),
-      testDeps = Seq(s"${sbuildBaseDir}/org.sbuild.runner/target/org.sbuild.runner-${sbuildVersion}.jar"),
+      testDeps = Seq(s"http://sbuild.org/uploads/sbuild/${sbuildVersion}/org.sbuild.runner-${sbuildVersion}.jar"),
       sbuildVersion = sbuildPluginVersion
     )
   }
