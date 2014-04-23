@@ -23,8 +23,8 @@ class SBuild(implicit _project: Project) {
 
   import org.sbuild.plugins.sbuildplugin._
 
-  val scalaVersion = "2.11.0-RC4"
-  val scalaBinVersion = "2.11.0-RC4"
+  val scalaVersion = "2.11.0"
+  val scalaBinVersion = "2.11"
   val sbuildPluginVersion = new SBuildVersion {
     override val version: String = sbuildVersion
     override val sbuildClasspath: TargetRefs =
